@@ -19,14 +19,14 @@ class karyawan:
         cls.persentasinaikgaji = nominal
 
 
-weri = karyawan('weri','-',2250000,24)
-ros = karyawan("Tante",'Ros',2000000,48)
+k001 = karyawan('Wendah','-',2250000,24)
+k002 = karyawan("Djubi",'Mawar',2000000,48)
 
 
 print(karyawan.persentasinaikgaji)
 
-weri.cls_naikgaji(100)
+k001.cls_naikgaji(100)
 karyawan.cls_naikgaji(karyawan.persentasinaikgaji)
 print(karyawan.persentasinaikgaji)
-print(weri.persentasinaikgaji)
-print(ros.persentasinaikgaji)
+print(k001.persentasinaikgaji)
+print(k002.persentasinaikgaji)
