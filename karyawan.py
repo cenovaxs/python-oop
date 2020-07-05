@@ -22,11 +22,38 @@ class karyawan:
 k001 = karyawan('Wendah','-',2250000,24)
 k002 = karyawan("Djubi",'Mawar',2000000,48)
 
+class boss(karyawan):
+    def __init__(self,namadepan,namabelakang,gaji,umur,pegawai=None):
+        super().__init__(namadepan,namabelakang,gaji,umur)
+        if pegawai is None:
+            self.pegawai = []
+        else:
+            self.pegawai = pegawai
 
-print(karyawan.persentasinaikgaji)
+    def add_emp(self, emp):
+        if emp not in self.pegawai:
+            self.pegawai.append(emp)
 
-k001.cls_naikgaji(100)
-karyawan.cls_naikgaji(karyawan.persentasinaikgaji)
-print(karyawan.persentasinaikgaji)
-print(k001.persentasinaikgaji)
-print(k002.persentasinaikgaji)
+    def remove_emp(self, emp):
+        if emp in self.pegawai:
+            self.pegawai.remove(emp)
+
+    def print_emps(self):
+        for emp in self.pegawai:
+            print('-->', emp.fullname())
+
+boss01 = boss('Pujastanto','-', 4000000, 34, [k001])
+
+
+print(boss01.gaji)
+boss01.add_emp(k002)
+boss01.print_emps()
+print(issubclass(boss, karyawan))
+print(isinstance(boss01, karyawan))
+# print(karyawan.persentasinaikgaji)
+#
+# k001.cls_naikgaji(100)
+# karyawan.cls_naikgaji(karyawan.persentasinaikgaji)
+# print(karyawan.persentasinaikgaji)
+# print(k001.persentasinaikgaji)
+# print(k002.persentasinaikgaji)
