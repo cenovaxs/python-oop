@@ -8,8 +8,27 @@ class karyawan:
         self.gaji=gaji
         self.umur=umur
         karyawan.jumlahkaryawan += 1
-    def fullname(self):
+
+    @property
+    def email(self):
+        return f'{self.namadepan}.{self.namabelakang}@email.com'
+    @property
+    def namalengkap(self):
         return f'{self.namadepan} {self.namabelakang}'
+
+    @namalengkap.setter
+    def namalengkap(self, nama):
+        namadepan, namabelakang = nama.split(' ')
+        self.namadepan = namadepan
+        self.namabelakang = namabelakang
+
+    @namalengkap.deleter
+    def namalengkap(self):
+        print('Nama Dihapus')
+        self.namadepan = None
+        self.namabelakang = None
+
+
     def naikgaji(self):
         self.gaji = int(self.gaji * Karyawan.naikgajipertahun)
     def pertambahangaji(self):
@@ -22,34 +41,15 @@ class karyawan:
 k001 = karyawan('Wendah','-',2250000,24)
 k002 = karyawan("Djubi",'Mawar',2000000,48)
 
-class boss(karyawan):
-    def __init__(self,namadepan,namabelakang,gaji,umur,pegawai=None):
-        super().__init__(namadepan,namabelakang,gaji,umur)
-        if pegawai is None:
-            self.pegawai = []
-        else:
-            self.pegawai = pegawai
+print(k001.namadepan)
+print(k001.email)
+print(k001.namalengkap)
 
-    def add_emp(self, emp):
-        if emp not in self.pegawai:
-            self.pegawai.append(emp)
+del k001.namalengkap
 
-    def remove_emp(self, emp):
-        if emp in self.pegawai:
-            self.pegawai.remove(emp)
+print(k001.namalengkap)
+print(k001.namadepan)
 
-    def print_emps(self):
-        for emp in self.pegawai:
-            print('-->', emp.fullname())
-
-boss01 = boss('Pujastanto','-', 4000000, 34, [k001])
-
-
-print(boss01.gaji)
-boss01.add_emp(k002)
-boss01.print_emps()
-print(issubclass(boss, karyawan))
-print(isinstance(boss01, karyawan))
 # print(karyawan.persentasinaikgaji)
 #
 # k001.cls_naikgaji(100)
